@@ -1,0 +1,14 @@
+{
+  "outboundUSSDMessageRequest": {
+    "address": "tel:+123456789",
+    "shortCode": "tel:1234",
+    "keyword": "123",
+    "outboundUSSDMessage": "No more questions for a dumbo who likes Ranjan\n99. Exit",
+    "clientCorrelator": "123456:AIN12345",
+    "responseRequest": {
+      "notifyURL": "54.193.73.88:8080/ussdsample/inbound",
+      "callbackData": "some-data-useful-to-the-requester"
+    },
+    "ussdAction": "mtcont"
+  }
+}
