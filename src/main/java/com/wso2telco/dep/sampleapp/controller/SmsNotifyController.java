@@ -5,6 +5,8 @@ import com.wso2telco.dep.sampleapp.model.SMSDNResponse;
 import com.wso2telco.dep.sampleapp.model.SMSMOResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +26,11 @@ public class SmsNotifyController {
     @RequestMapping(path = "/deliveryNotification", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity receiveSmsDNFromHub(@RequestBody SMSDNResponse smsdnResponse) throws Exception {
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
         UUID correlationID = UUID.randomUUID();
         logger.info("Received SMS DN body to correlation id {}  {} ", correlationID, new Gson().toJson(smsdnResponse));
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>("{}",headers, HttpStatus.OK);
 
     }
 
